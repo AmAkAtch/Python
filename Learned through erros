@@ -1,0 +1,15 @@
+You can't parse entire column like this
+int(sales_data.Sales)
+
+plt.plot(x=sales_data.Month, y=sales_data.Sales, data=sales_data) - This is matplotlib and Seaborn mixed - You don't pass arguments like this in matplotlib - in matplotlib you directly pass the values as parameteres
+
+to get the index using numpy you have to use
+np.argmax()
+
+While using iloc you are accessing the row so
+dataframe.iloc[] -> is the right choice
+dataframe.iloc() -> is the wrong choice
+
+While trying to get the cell in datafram
+dataframe.iloc[index, "column_name"] => is wrong and gives error
+dataframe.iloc[index, dataframe.column.get_loc("colume_name")] -> is the right choice and will select colum for that specific index
