@@ -13,3 +13,9 @@ dataframe.iloc() -> is the wrong choice
 While trying to get the cell in datafram
 dataframe.iloc[index, "column_name"] => is wrong and gives error
 dataframe.iloc[index, dataframe.column.get_loc("colume_name")] -> is the right choice and will select colum for that specific index
+
+use iloc when accessing rows based on interger based position access, and use loc when doind label based position acess
+iloc[] - give me the row at position... - Good where the default indexing is used
+loc[] - give me the row where the label is... - Good where the custom indexing is used like dates
+iloc[2,1] - row 3, column 2
+loc[2,"MOnth"] - give me the row where index label is 2 and column name is Month
