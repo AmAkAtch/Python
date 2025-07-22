@@ -58,6 +58,7 @@ def plot_chart(df:pd.DataFrame):
     plt.plot(df["Month"], df["Sales"], marker="o", color="red")
     plt.title("Monthly Sales Comparison")
     plt.xlabel("Month")
+    plt.xticks(rotation=45)
     plt.ylabel("Sales")
     plt.grid(True)
     plt.show()
