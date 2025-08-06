@@ -1,8 +1,6 @@
 from huggingface_hub import InferenceClient
 
 client = InferenceClient(provider="hf-inference")
-
-
 response = client.chat.completions.create(
     model="HuggingFaceTB/SmolLM3-3B",
     messages=[
