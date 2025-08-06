@@ -80,3 +80,6 @@ if __name__=="__main__":
     cf, y_pred = evaluate_model(X_test, y_test, model)
     print("Confusion Matrix: \n", cf)
     plot_confusion_matrix(cf)
+     # Print model parameters
+    print(f"Model Weights: {model.coef_}")
+    print(f"Model Intercept: {model.intercept_}")
