@@ -31,3 +31,22 @@ for character in range(total_pass_legnth * 2):
         numbers_count += 1
 
 print(f'{password} of length {len(password)}')
+
+
+# Or another way to tackle the same problem would be
+password=""
+password_list = []
+
+for letter in range(0, nr_letters):
+    password_list.append(random.choice(letters))
+for number in range(0, nr_numbers):
+    password_list.append(random.choice(numbers))
+for symbol in range(0, nr_symbols):
+    password_list.append(random.choice(symbols))
+
+random.shuffle(password_list)
+
+for char in password_list:
+    password += char
+
+print(f'{password} is {len(password)} long')
