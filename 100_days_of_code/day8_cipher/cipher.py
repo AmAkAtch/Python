@@ -14,9 +14,12 @@ def encode():
     ciphered_text = ""
 
     for char in plain_text.lower():
-        shifted_index = alphabet.index(char) + shift_number
-        shifted_index %= len(alphabet)
-        ciphered_text += alphabet[shifted_index]
+        if char not in alphabet:
+            ciphered_text += char
+        else:
+            shifted_index = alphabet.index(char) + shift_number
+            shifted_index %= len(alphabet)
+            ciphered_text += alphabet[shifted_index]
 
     print(f'Ciphered text : {ciphered_text}')
 
@@ -26,9 +29,12 @@ def decode():
     plain_text = ""
 
     for char in cipher_text.lower():
-        shifted_index = alphabet.index(char) - shift_number
-        shifted_index %= len(alphabet)
-        plain_text += alphabet[shifted_index]
+        if char not in alphabet:
+            plain_text += char
+        else:
+            shifted_index = alphabet.index(char) - shift_number
+            shifted_index %= len(alphabet)
+            plain_text += alphabet[shifted_index]
     
     print(f'Plain text : {plain_text}')
 
