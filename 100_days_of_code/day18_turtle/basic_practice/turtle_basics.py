@@ -1,4 +1,4 @@
-from turtle import Turtle, Screen
+from turtle import Turtle, Screen, colormode
 import random
 
 turtle = Turtle()
@@ -10,14 +10,29 @@ turtle_colors = [
     "crimson", "darkgreen", "darkblue", "darkred", "lightblue", "lightgreen",
     "lightgray", "lavender", "thistle", "tomato", "wheat", "seashell", "snow"
 ]
-#Each shape has same sides and same angles
+#draw shapes from triangle to any number
+def draw_shapes(number_of_shapes):
+    for sides in range (3, number_of_shapes+1):
+        turtle.color(random.choice(turtle_colors))
+        for side in range(sides):
+            turtle.forward(100)
+            angle = (sides-2)*180/sides
+            turtle.right(180-angle)
 
-for sides in range (3, 11):
-    turtle.color(random.choice(turtle_colors))
-    for side in range(sides):
-        turtle.forward(100)
-        angle = (sides-2)*180/sides
-        turtle.right(180-angle)
+#draw random walk
+def draw_random_walk(turns):
+    for turn in range(turns):
+        colormode(255)
+        turtle.color(random.randint(0,255), random.randint(0,255),random.randint(0,255))
+        turtle.pensize(5)
+        turtle.forward(30)
+        angle = random.randint(1,4)*90
+        turtle.right(angle)
+
+
+
+# draw_shapes(5)
+draw_random_walk(100)
 
 
 screen = Screen()
