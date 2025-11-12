@@ -30,9 +30,18 @@ def draw_random_walk(turns):
         turtle.right(angle)
 
 
+def draw_spirograph(turns):
+    turtle.speed("fastest")
+    for turn in range(turns):
+        colormode(255)
+        turtle.color(random.randint(0,255),random.randint(0,255),random.randint(0,255))
+        turtle.circle(100)
+        turtle.right(360/turns)
+        turtle.forward(5)
 
 # draw_shapes(5)
-draw_random_walk(100)
+# draw_random_walk(100)
+draw_spirograph(200)
 
 
 screen = Screen()
