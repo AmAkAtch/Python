@@ -4,21 +4,26 @@ class Snake:
     def __init__(self):
         self.snake_body = []
         self.initial_position = [(0,0), (-20,0), (-40,0)]
+        
         #defining snake
         for seg_pos in self.initial_position:
-            snake=Turtle()
-            snake.penup()
-            snake.color("white")
-            snake.shape("square")
-            snake.setpos(seg_pos)
-            self.snake_body.append(snake)
+            self.add_segment(seg_pos)
+            self.snake_head = self.snake_body[0]
     
+    def add_segment(self, seg_pos):
+        snake=Turtle()
+        snake.penup()
+        snake.color("white")
+        snake.shape("square")
+        snake.setpos(seg_pos)
+        self.snake_body.append(snake)
+
     def move_snake(self):
         for seg_index in range(len(self.snake_body)-1, 0,-1):
             x_cor = self.snake_body[seg_index-1].xcor()
             y_cor = self.snake_body[seg_index-1].ycor()
             self.snake_body[seg_index].goto(x_cor, y_cor)
-        self.snake_body[0].forward(20)
+        self.snake_head.forward(20)
     
     def turn_up(self):
         if self.snake_body[0].heading() == 0 or self.snake_body[0].heading()==180:
