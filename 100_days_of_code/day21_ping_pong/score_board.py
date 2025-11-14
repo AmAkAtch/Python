@@ -3,13 +3,20 @@ from turtle import Turtle
 class ScoreBoard(Turtle):
 
     ALIGNMENT = "center"
-    FONT =  ("Arial", 20, "normal")
+    FONT =  ("Arial", 50, "normal")
 
-    def __init__(self):
+    def __init__(self, player):
         super().__init__()
         self.score = 0
         self.hideturtle()
         self.penup()
         self.color("white")
-        self.goto(0, 270)
+        if player == 1:
+            self.goto(-50, 200)
+        else:
+            self.goto(50, 200)
+        self.write_score()
+        
+    def write_score(self):
+        self.clear()
         self.write(arg=f"{self.score}",align=self.ALIGNMENT,font= self.FONT)
