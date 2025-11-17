@@ -19,7 +19,7 @@ ball = Ball()
 def draw_line():
     painter = Turtle("square")
     painter.hideturtle()
-    painter.width(10)
+    painter.width(5)
     painter.penup()
     painter.color("white")
     painter.setpos(0, -300)
@@ -31,11 +31,38 @@ def draw_line():
         painter.forward(20)
     screen.update()
 
+def update_score():
+    if ball.xcor() <= -300:
+        comp_score.increase_score()
+        ball.reset_ball()
+    elif ball.xcor() >= 300:
+        p1_score.increase_score()
+        ball.reset_ball()
+ 
+def detect_bounce():
+    if ball.ycor() <= -280 or ball.ycor() >= 280:
+        ball.seth(360 - ball.heading()) 
+
+def detect_collision_with_sticks():
+    for segment in player_stick.stick + computer_stick.stick:
+        if ball.distance(segment) < 20:
+            ball.setheading(180 - ball.heading())
+
+def move_player_stick():
+    screen.onkeypress(player_stick.move_up, "w")
+    screen.onkeypress(player_stick.move_down, "s")
+    screen.listen()
+
 is_game_on = True
 
 draw_line()
 while is_game_on:
     ball.move_ball()
+    detect_bounce()
+    move_player_stick()
+    computer_stick.move_stick()
+    detect_collision_with_sticks()
+    update_score()
     screen.update()
     time.sleep(0.1)
 
