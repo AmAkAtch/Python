@@ -13,7 +13,6 @@ player = Player()
 level = Scoreboard()
 car = CarManager()
 
-
 def move_turtle_up():
     screen.onkeypress(player.move_up, "w")
     screen.listen()
@@ -25,9 +24,12 @@ def update_score():
         player.reset_pos()
 
 game_is_on = True
+
+move_turtle_up()
 while game_is_on:
-    move_turtle_up()
+    car.create_car()
     car.move_car()
     update_score()
     time.sleep(0.1)
+    car.remove_offscreen_cars()
     screen.update()
