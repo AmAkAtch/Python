@@ -22,14 +22,25 @@ def update_score():
     if player.ycor() >= 260:
         level.increase_level()
         player.reset_pos()
+        car.increase_move_distance()
+
+def detect_collision():
+    global game_is_on
+    for cars in car.all_cars:
+        if cars.distance(player) <15:
+            level.game_over()
+            game_is_on = False
 
 game_is_on = True
 
 move_turtle_up()
 while game_is_on:
+    update_score()
     car.create_car()
     car.move_car()
-    update_score()
+    detect_collision()
     time.sleep(0.1)
     car.remove_offscreen_cars()
     screen.update()
+
+screen.exitonclick()

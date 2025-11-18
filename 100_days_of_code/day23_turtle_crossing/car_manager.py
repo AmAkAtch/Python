@@ -9,6 +9,7 @@ MOVE_INCREMENT = 10
 class CarManager():
     def __init__(self):
         self.all_cars = []
+        self.current_move_distance = STARTING_MOVE_DISTANCE
         
     def create_car(self):
         if randint(1, 6) == 1:
@@ -24,9 +25,10 @@ class CarManager():
 
     def move_car(self):
         for car in self.all_cars:
-            car.forward(STARTING_MOVE_DISTANCE)
+            car.forward(self.current_move_distance)
 
     def remove_offscreen_cars(self):
-        self.all_cars = [car for car in self.all_cars if car.xcor() > -300]
+        self.all_cars = [car for car in self.all_cars if car.xcor() > -320]
 
-
+    def increase_move_distance(self):
+        self.current_move_distance += MOVE_INCREMENT
