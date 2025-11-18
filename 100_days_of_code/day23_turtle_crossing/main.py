@@ -27,7 +27,7 @@ def update_score():
 def detect_collision():
     global game_is_on
     for cars in car.all_cars:
-        if cars.distance(player) <15:
+        if cars.distance(player) <30 and cars.xcor()-20<=player.xcor() <= cars.xcor()+20 :
             level.game_over()
             game_is_on = False
 
