@@ -16,6 +16,7 @@ is_game_on = True
 snake = Snake()
 food = Food()
 score_board = ScoreBoard()
+speed = 0.15
 
 def detect_collision_with_food():
     if food.distance(snake.snake_head) <= 16:
@@ -23,24 +24,32 @@ def detect_collision_with_food():
         seg_pos = snake.snake_body[-1].pos()
         snake.add_segment(seg_pos)
         score_board.refresh_score()
+        global speed
+        speed *= 0.9
+        
 
 def detect_collision_with_wall():
-    if snake.snake_head.xcor() >= 280 or snake.snake_head.ycor() >= 280:
-        score_board.game_over()
-        global is_game_on
-        is_game_on = False
+    if snake.snake_head.xcor()>=280 or snake.snake_head.xcor()<=-280 or snake.snake_head.ycor()>=280 or snake.snake_head.ycor()<=-280:
+        global speed
+        speed = 0.1
+        score_board.reset()
+        snake.snake_reset()
+        
 
 def detect_collision_with_tail():
     for segment in snake.snake_body[1:]:
         if snake.snake_head.pos() == segment.pos():
-            score_board.game_over()
-            global is_game_on
-            is_game_on = False
+            global speed
+            speed = 0.1
+            score_board.reset()
+            snake.snake_reset()
+           
 
 def detect_collision():
     detect_collision_with_food()
     detect_collision_with_wall()
     detect_collision_with_tail()
+
 
 while is_game_on:
     snake.move_snake()
@@ -51,7 +60,7 @@ while is_game_on:
     detect_collision()
     screen.listen()
     screen.update()
-    time.sleep(0.1)
+    time.sleep(speed)
     
 
 screen.exitonclick()
