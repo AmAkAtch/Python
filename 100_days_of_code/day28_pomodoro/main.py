@@ -6,7 +6,7 @@ YELLOW = "#FFD65A"
 CANVAS_WIDTH, CANVAS_HEIGHT = 300, 300
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 15
-FOCUS_MIN = 25
+FOCUS_MIN = 1
 
 #VARIABLES
 pomodoro_counter = 0
@@ -19,9 +19,11 @@ def update_time(seconds, message):
     """Take Seconds to Update timer every second and Message to Display when Timer ends"""
     display_seconds = seconds % 60
     display_min = math.floor(seconds/60)
+    if seconds<5:
+        window.attributes('-topmost', True)
+        window.attributes('-topmost', False)
 
     if display_seconds <10:
-        window.lift()
         display_seconds = f'0{display_seconds}'
 
     canvas.itemconfigure(timer, text=f'{display_min}:{display_seconds}')
