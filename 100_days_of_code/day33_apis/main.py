@@ -5,7 +5,7 @@ from datetime import datetime
 MY_LAT = 21.901840
 MY_LONG =  83.348267
 EMAIL = "gadhavirushiraj7@gmail.com"
-PASSWORD = "nnea krgu xbyn hqut"
+PASSWORD = ""
 
 request = requests.get("https://api.wheretheiss.at/v1/satellites/25544")
 data = request.json()
