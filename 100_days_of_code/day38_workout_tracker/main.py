@@ -1,11 +1,17 @@
 import requests
 from datetime import datetime
+import os
+from dotenv import load_dotenv
 
-APPID= "app_d40a4a8efee14ef88c7b91a1"
-APPKEY= "nix_live_KeCwUF70OP3EtuehIo1Wvr11fZXvtL0v"
-BASE_API_URL="https://app.100daysofpython.dev"
-SHEETY_ENDPOINT = "https://api.sheety.co/44fe9665755c4d5ac9900bc2f90dfa2d/workoutTracking/workouts"
-TOKEN = "Bearer dsdfsjklfsdjfhsk;dj;kfsk;hds"
+load_dotenv()
+print(os.getcwd())
+
+
+APPID= os.getenv("APPID")
+APPKEY= os.getenv("APPKEY")
+BASE_API_URL=os.getenv("BASE_API_URL")
+SHEETY_ENDPOINT = os.getenv("SHEETY_ENDPOINT")
+TOKEN = os.getenv("TOKEN")
 
 HEADERS = {
     "x-app-id": APPID,
