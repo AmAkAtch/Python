@@ -34,3 +34,4 @@ flight_data_list = []
 for city in cities:
     flight_data = FlightData(city_data=city, date='2026-02-13', auth_manager=auth_manager)
     flight_data_list.append(flight_data)
+    print(flight_data.get_flight())
