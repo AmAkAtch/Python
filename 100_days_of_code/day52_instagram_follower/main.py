@@ -1,7 +1,12 @@
+import os
+from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from insta_follow_bot import InstaFollowBot
 
+load_dotenv()
+
+SIMILAR_ACCOUNT = os.getenv("SIMILAR_ACCOUNT")
 
 #initialize the selenium webdriver
 options = Options()
@@ -18,6 +23,7 @@ driver = webdriver.Chrome(options=options)
 #create object for insta_follow_bot
 follow_bot = InstaFollowBot(driver)
 follow_bot.insta_login()
+follow_bot.search_insta_account(SIMILAR_ACCOUNT)
 
 
 
