@@ -49,23 +49,25 @@ class InstaFollowBot:
             print(f"Save password dialogue did not appear: {e}")
 
     def search_insta_account(self, account_name):
-        print("Trying Search")
-        time.sleep(5)
-        # try:
-        #     search_icon = WebDriverWait(self.driver, 10).until(
-        #         EC.element_to_be_clickable((By.CSS_SELECTOR, "svg[aria-label='Search']/.."))
-        #     )
-        #     search_icon.click()
-        # except Exception as e:
-        #     print(f"Exception in CSS tags: {e}")
+        print("Searching sequence for Instagram account beginning...")
 
-        try:
-            print("trying x path")
-            search_icon = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, "//*[local-name()='svg' and @aria-label='Search']"))
-            )
-            search_icon.click()
-        except Exception as e:
-            print(f"Exception in x path: {e}")
-        else:
-            text_input = 
+        #find the search button using X path
+        # search_icon = WebDriverWait(self.driver, 10).until(
+        #     EC.element_to_be_clickable((By.XPATH, "//*[local-name()='svg' and @aria-label='Search']"))
+        # )
+        # search_icon.click()
+
+        # try:
+        #     print("Finding the search box and sending keys")
+        #     search_box = WebDriverWait(self.driver, 10).until(
+        #         EC.presence_of_element_located((By.CSS_SELECTOR,"input[aria-label='Search input']"))
+        #         )
+        #     search_box.send_keys(account_name)
+        # except Exception as e:
+        #     print(f"Error while trying to send keys {e}")
+    
+        # going directly to the url of the page to search the page
+        self.driver.get(f"https://www.instagram.com/{account_name}/")
+
+
+        
