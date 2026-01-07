@@ -4,6 +4,14 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from insta_follow_bot import InstaFollowBot
 
+
+"""
+Login not working
+check follow button final peice of the code
+
+"""
+
+
 load_dotenv()
 
 SIMILAR_ACCOUNT = os.getenv("SIMILAR_ACCOUNT")
@@ -19,12 +27,16 @@ options.add_experimental_option("prefs", {
 })
 
 driver = webdriver.Chrome(options=options)
+is_login_success = False
 
 #create object for insta_follow_bot
 follow_bot = InstaFollowBot(driver)
-follow_bot.insta_login()
-follow_bot.search_insta_account(SIMILAR_ACCOUNT)
-
+is_login_success = follow_bot.insta_login()
+if is_login_success:
+    follow_bot.search_insta_account(SIMILAR_ACCOUNT)
+    follow_bot.follow_people()
+else:
+    print(f"Login was not successfull")
 
 
 
